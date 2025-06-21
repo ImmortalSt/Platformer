@@ -5,38 +5,46 @@ using UnityEngine;
 public class OpponentAttack : MonoBehaviour
 {
     [SerializeField] private float HP = 100f;
+    [SerializeField] private float distance = 1f;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D attack)
     {
-        PlayerHP playerHP = other.GetComponent<PlayerHP>();
-
-        if (other.CompareTag("Player"))
+        if (attack.CompareTag("Player"))
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("dragon"))
+            PlayerHP playerHP = attack.GetComponent<PlayerHP>();
+            if (playerHP != null) 
             {
-                HP -= 20f;
-                Debug.Log(" - 20. itog = " + HP);
-                if (HP <= 0f)
+                RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector3.down, distance);
+                foreach (var hit in hits)
                 {
-                    if (playerHP != null)
+                    if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("dragon"))
                     {
-                        playerHP.GetDamage(20f);
+                        float damage = 20f;
+                        HP -= damage;
+                        if (HP <= 0f)
+                        {
+                            playerHP.GetDamage(damage);
+                            
+                            Destroy(attack.gameObject); // ”ничтожить текущий объект 
+                            break;
+                        }
+                        Debug.Log(" - 20. itog = " + HP);
+                        playerHP.DeleteHP(damage);
                     }
-                    Destroy(other.gameObject); // ”ничтожить текущий объект
                 }
-            }
-            else if (other.gameObject.layer == LayerMask.NameToLayer("fire"))
-            {
-                HP -= 50f;
-                Debug.Log(" - 50. itog = " + HP);
-                if (HP <= 0f)
-                {
-                    if (playerHP != null)
-                    {
-                        playerHP.GetDamage(50f);
-                    }
-                    Destroy(other.gameObject); // ”ничтожить текущий объект
-                }
+                //else if (attack.gameObject.layer == LayerMask.NameToLayer("fire"))
+                //{
+                //    HP -= 50f;
+                //    Debug.Log(" - 50. itog = " + HP);
+                //    if (HP <= 0f)
+                //    {
+                //        if (playerHP != null)
+                //        {
+                //            playerHP.GetDamage(50f);
+                //        }
+                //        Destroy(attack.gameObject); // ”ничтожить текущий объект
+                //    }
+                //}
             }
         }
 
