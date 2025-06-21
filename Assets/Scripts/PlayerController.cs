@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D body;
     private Collider2D collider;
+
     private bool isRun = false;
 
     void Start()
