@@ -11,6 +11,7 @@ public class PlayerHP : MonoBehaviour
       
     [SerializeField] private TMP_Text textHP;
 
+
     private void Start()
     {
         startPosition = transform.position;
@@ -28,12 +29,6 @@ public class PlayerHP : MonoBehaviour
             Debug.Log("Player is dead");
             Respawn();
         }
-        
-    }
-
-    public void DeleteHP(float damage)
-    {
-        HP -= damage;
         textHP.text = $"HP: {HP}";
     }
 
@@ -50,4 +45,24 @@ public class PlayerHP : MonoBehaviour
             cam.target = transform;
         }
     }
+
+    //[SerializeField] private float minX = -5f;
+    //[SerializeField] private float maxX = 5f;
+    //public Transform target;
+    //public float smoothTime = 0.2f;
+
+    //private Vector3 _velocity = Vector3.zero;
+
+    //void LateUpdate()
+    //{
+    //    Vector3 targetPosition = new Vector3(
+    //        target.position.x < minX
+    //        ? minX
+    //        : (target.position.x > maxX
+    //        ? maxX
+    //        : target.position.x), target.position.y, transform.position.z);
+
+    //    transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
+    //}
+
 }
