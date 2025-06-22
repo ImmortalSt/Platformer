@@ -24,7 +24,7 @@ public class DeviceOperator : MonoBehaviour
         }
     }
 
-    // по радиусу открытие
+    // по радиусу открытие door
 
     //public float radius = 1.5f;
 

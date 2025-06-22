@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class TriggerDevice : MonoBehaviour
 {
-    [SerializeField] private OpenDoor openDoor;
+    //[SerializeField] private OpenDoor openDoor;
+    [SerializeField] private ShowDragon showDragon;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            openDoor.Open();
+            //openDoor.Open();
+            showDragon.Open();
         }
     }
 
@@ -18,7 +20,8 @@ public class TriggerDevice : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            openDoor.Close();
+            //openDoor.Close();
+            showDragon.Close();
         }
 
     }
