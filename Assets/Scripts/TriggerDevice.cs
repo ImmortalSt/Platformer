@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TriggerDevice : MonoBehaviour
 {
-    //[SerializeField] private OpenDoor openDoor;
+    [SerializeField] private OpenDoor openDoor;
     [SerializeField] private ShowDragon showDragon;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,4 +25,6 @@ public class TriggerDevice : MonoBehaviour
         }
 
     }
+
+    
 }

@@ -30,6 +30,7 @@ public class PlayerHP : MonoBehaviour
             Respawn();
         }
         textHP.text = $"HP: {HP}";
+
     }
 
     //возродение игрока на начальной позиции
@@ -44,6 +45,12 @@ public class PlayerHP : MonoBehaviour
         {
             cam.target = transform;
         }
+    }
+
+    public void GetHP(float hp)
+    {
+        HP += hp;
+        textHP.text = $"HP: {HP}";
     }
 
     //[SerializeField] private float minX = -5f;

@@ -43,7 +43,7 @@ public class DeviceOperator : MonoBehaviour
     //        if (device != null)
     //            device.Operate();
     //    }
-        //}
+    //}
 
     
 }
